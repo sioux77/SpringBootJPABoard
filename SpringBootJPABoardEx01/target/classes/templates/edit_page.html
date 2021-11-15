@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8"/>
+<title>edit page</title>
+</head>
+<body>
+
+<div align="center">
+	<h1>Edit Board</h1>
+	<br/>
+	<form th:action="@{/save}" th:object="${board}" method="post">
+		<input type="hidden" th:field="*{ref}">
+		<input type="hidden" th:field="*{ref_seq}">
+		<input type="hidden" th:field="*{ref_level}">
+		<input type="hidden" th:field="*{board_cnt}">
+		<input type="hidden" th:field="*{board_id}">
+		<table border="1">
+			<tr>
+				<td>Title</td>
+				<td><input type="text" th:field="*{board_title}"></td>
+			</tr>		
+			<tr>
+				<td>Content</td>
+				<td><textarea cols="30" th:field="*{board_content}"></textarea>
+			</tr>
+			<tr>
+				<td>Writer</td>
+				<td><input type="text" th:field="*{board_writer}" readonly></td>
+			</tr>
+			<tr>
+				<td>Password</td>
+				<td><input type="text" th:field="*{board_pwd}"></td>
+			</tr>
+			<tr>
+				<td>RegDate</td>
+				<td th:text="*{board_reg_date}"></td>
+			</tr>
+			<tr>
+				<td colspan="2">
+					<button type="submit">Edit</button>
+				</td>
+			</tr>
+		</table>
+	</form>
+</div>
+
+</body>
+</html>

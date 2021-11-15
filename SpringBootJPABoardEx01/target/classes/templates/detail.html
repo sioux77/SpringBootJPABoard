@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8"/>
+<title>detail page</title>
+<script type="text/javascript">
+ function back() {
+	 window.location="/0";
+ }
+</script>
+</head>
+<body>
+
+<div align="center">
+	<h1>Board Post Detail</h1>
+	<br/>
+	<table border="1">
+		<tr>
+			<td>Title</td>
+			<td th:text="${board.board_title}"></td>
+		</tr>		
+		<tr>
+			<td>Content</td>
+			<td th:text="${board.board_content}"></td>
+		</tr>
+		<tr>
+			<td>Writer</td>
+			<td th:text="${board.board_writer}"></td>
+		</tr>
+		<tr>
+			<td>Password</td>
+			<td th:text="${board.board_pwd}"></td>
+		</tr>
+		<tr>
+			<td>RegDate</td>
+			<td th:text="${board.board_reg_date}"></td>
+		</tr>
+		<tr>
+			<td colspan="2">
+				<button id="back" onclick="back();">Back</button>
+			</td>
+		</tr>
+	</table>
+</div>
+
+</body>
+</html>

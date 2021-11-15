@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8" />
+<title>Main</title>
+</head>
+<body>
+
+	<div align="center">
+		<h1>Product Manager</h1>
+		<a href="new">Create New Product</a>
+		<br/><br/>
+		
+		<table border="1">
+			<thead>
+				<tr>
+					<th>ID</th>
+					<th>Title</th>
+					<th>Content</th>
+					<th>Writer</th>
+					<th>Views</th>
+					<th>RegDate</th>
+					<th>Ref / Ref_Seq / Ref_Level</th>
+					<th>Actions</th>
+				</tr>
+			</thead>
+			
+			<tbody>
+				<tr th:each="board : ${list}">
+					<td th:text="${board.board_id}">ID</td>
+					<td>
+						<a th:href="@{'/detail/' + ${board.board_id} + '/' + ${board.board_cnt}}" th:text="${board.board_title}"></a>
+					</td>
+					<td th:text="${board.board_content}"></td>
+					<td th:text="${board.board_writer}"></td>
+					<td th:text="${board.board_cnt}"></td>
+					<td th:text="${board.board_reg_date}"></td>
+					<td th:text="|${board.ref} / ${board.ref_seq} / ${board.ref_level}|"></td>
+					<td>
+						<a th:href="@{'/edit/' + ${board.board_id}}">Edit</a>
+						<a th:href="@{'/delete/' + ${board.board_id}}">delete</a>
+						<a th:href="@{'/reply_post/' + ${board.board_id} + '/' + ${board.ref_seq} + '/' + ${board.ref_level} + '/' + ${board.ref}}">Reply</a>
+					</td>
+				</tr>
+				
+			</tbody>
+			<tfoot>
+				<tr>
+					<td colspan="8" align="center">
+						<span th:each="number: ${#numbers.sequence(startBlockPage,endBlockPage)}">
+   							<a th:href="@{'/' + ${number}}" th:text="${number}"></a>
+   						</span>
+					</td>
+				</tr>
+			</tfoot>
+		</table>	
+		
+	</div>
+
+</body>
+</html>
